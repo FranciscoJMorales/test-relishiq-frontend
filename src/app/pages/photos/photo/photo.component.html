@@ -1,0 +1,46 @@
+@if (!photo) {
+  <div class="text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+}
+@else {
+    <h5 class="card-title">{{photo.title}}</h5>
+    <div class="text-center my-3">
+        <img [src]="photo.url" alt="Photo">
+    </div>
+    <p><b>Album: </b>{{photo.album.title}}</p>
+    <h5 class="mt-5 mb-3">User information</h5>
+    <table class="mb-3">
+        <tbody>
+            <tr>
+                <td class="fw-bold pe-3">Name:</td>
+                <td>{{photo.album.user.name}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Username:</td>
+                <td>{{photo.album.user.username}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Email:</td>
+                <td>{{photo.album.user.email}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Address:</td>
+                <td>{{formatAddress(photo.album.user.address)}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Phone:</td>
+                <td>{{photo.album.user.phone}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Website:</td>
+                <td>{{photo.album.user.website}}</td>
+            </tr>        
+            <tr>
+                <td class="fw-bold pe-3">Company:</td>
+                <td>{{formatCompany(photo.album.user.company)}}</td>
+            </tr>        
+        </tbody>
+    </table>
+}
+<a href="/">Back to index</a>

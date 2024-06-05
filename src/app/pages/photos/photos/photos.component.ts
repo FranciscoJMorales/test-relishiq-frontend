@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { Photo } from '../../../interfaces/photo';
 import { PhotosService } from '../../../services/photos.service';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-photos',
@@ -35,8 +35,8 @@ export class PhotosComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute, 
-    private formBuilder: FormBuilder,
     private photosService: PhotosService,
+    formBuilder: FormBuilder,
   ) {
     this.filters = formBuilder.group({
       title: [null],
