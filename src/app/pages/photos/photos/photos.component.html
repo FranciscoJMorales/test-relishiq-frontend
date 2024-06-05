@@ -1,5 +1,5 @@
 <p class="card-text fw-bold">Filter photos:</p>
-<form (ngSubmit)="getPhotos()" [formGroup]="filters">
+<form (ngSubmit)="applyFilters()" [formGroup]="filters">
   <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
       <label for="title" class="form-label">Photo Title</label>
@@ -14,7 +14,8 @@
       <input type="email" class="form-control" id="albumUserEmail" formControlName="albumUserEmail">
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Filter</button>
+  <button type="submit" class="btn btn-primary me-2">Filter</button>
+  <button (click)="clearFilters()" class="btn btn-secondary">Clear</button>
 </form>
 <hr />
 @if (loading) {
