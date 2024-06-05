@@ -1,0 +1,41 @@
+<p class="card-text fw-bold">Filter photos:</p>
+<form (ngSubmit)="getPhotos()" [formGroup]="filters">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <label for="title" class="form-label">Photo Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <label for="albumTitle" class="form-label">Album Title</label>
+      <input type="text" class="form-control" id="albumTitle" formControlName="albumTitle">
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <label for="albumUserEmail" class="form-label">User Email</label>
+      <input type="email" class="form-control" id="albumUserEmail" formControlName="albumUserEmail">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Filter</button>
+</form>
+<hr />
+@if (loading) {
+  <div class="text-center">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+}
+@else {
+  @for (photo of photos; track photo.id) {
+    <div class="row">
+      <div class="col-auto">
+        <img [src]="photo.thumbnailUrl"m alt="Photo">
+      </div>
+      <div class="col-auto">
+        <p><b>Title: </b>{{photo.title}}</p>
+        <p><b>Album: </b>{{photo.album.title}}</p>
+        <p><b>User: </b>{{photo.album.user.name}}</p>
+        <p><b>Email: </b>{{photo.album.user.email}}</p>
+      </div>
+    </div>
+    <hr />
+  }
+  <p>@if (offset > 0){<a href="/">&lt; Previous</a> | }Page 1@if(photos.length === limit){ | <a href="/">Next &gt;</a>}</p>
+}
