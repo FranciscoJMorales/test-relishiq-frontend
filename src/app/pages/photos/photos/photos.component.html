@@ -39,4 +39,14 @@
     <hr />
   }
   <p>@if (offset > 0){<a (click)="previousPage()">&lt; Previous</a> | }Page {{1 + offset/limit}}@if(photos.length === limit){ | <a (click)="nextPage()">Next &gt;</a>}</p>
+  <div class="row">
+    <div class="col-auto">
+        Photos per page:
+    </div>
+    <div class="col-auto">
+        <div class="w-100p">
+            <ng-select [items]="limits" (change)="changeLimit($event)" [(ngModel)]="limit" [clearable]="false"></ng-select>
+        </div>
+    </div>
+  </div>
 }
