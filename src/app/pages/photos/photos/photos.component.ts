@@ -46,8 +46,10 @@ export class PhotosComponent implements OnInit {
     this.title = this.activatedRoute.snapshot.queryParams['title'] ?? null;
     this.albumTitle = this.activatedRoute.snapshot.queryParams['album.title'] ?? null;
     this.albumUserEmail = this.activatedRoute.snapshot.queryParams['album.user.email'] ?? null;
-    this.offset = this.activatedRoute.snapshot.queryParams['offset'] ?? 0;
-    this.limit = this.activatedRoute.snapshot.queryParams['limit'] ?? 25;
+    const offset = parseInt(this.activatedRoute.snapshot.queryParams['offset'] ?? 0);
+    const limit = parseInt(this.activatedRoute.snapshot.queryParams['limit'] ?? 25);
+    this.offset = isNaN(offset) ? 0 : offset;
+    this.limit = isNaN(limit) ? 25 : limit;
 
     this.filters.reset({
       title: this.title,
@@ -98,6 +100,16 @@ export class PhotosComponent implements OnInit {
     this.albumTitle = null;
     this.albumUserEmail = null;
     this.offset = 0;
+    this.getPhotos();
+  }
+
+  previousPage(): void {
+    this.offset -= this.limit;
+    this.getPhotos();
+  }
+
+  nextPage(): void {
+    this.offset += this.limit;
     this.getPhotos();
   }
 }
