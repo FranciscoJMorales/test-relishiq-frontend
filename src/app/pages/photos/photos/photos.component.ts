@@ -95,9 +95,9 @@ export class PhotosComponent implements OnInit {
 
   applyFilters(): void {
     const { title, albumTitle, albumUserEmail } = this.filters.value;
-    this.title = title;
-    this.albumTitle = albumTitle;
-    this.albumUserEmail = albumUserEmail;
+    this.title = title || null;
+    this.albumTitle = albumTitle || null;
+    this.albumUserEmail = albumUserEmail || null;
     this.offset = 0;
     this.getPhotos();
   }
