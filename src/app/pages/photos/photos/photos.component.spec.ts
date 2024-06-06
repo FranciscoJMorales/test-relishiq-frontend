@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotosComponent } from './photos.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { routes } from '../../../app.routes';
 
 describe('PhotosComponent', () => {
   let component: PhotosComponent;
@@ -8,7 +11,8 @@ describe('PhotosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PhotosComponent]
+      imports: [PhotosComponent],
+      providers: [provideHttpClient(withFetch()), provideRouter(routes)]
     })
     .compileComponents();
     
