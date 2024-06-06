@@ -7,7 +7,7 @@
 
 ## Quickstart
 
-1. Run `npm install` in base directory.
+1. Run `npm install` in the base directory.
 2. Run `ng serve` for a dev server. The server will open in `http://localhost:4200/`.
 
 ## Build
@@ -19,4 +19,4 @@ Run `ng build` to build the project. The compiled output will be located in the 
 This project is dockerized for an easier deployment. Having docker installed:
 
 - Run `docker build -t <user>/<repository> .` to build the image and assign its tag.
-- Run `docker run --name <name> -d -p 80:80 <user>/<repository>` to run a container with the image.
+- Run `docker run --name <name> -d -p 80:80 <user>/<repository>` to run a container with the image. The host port can be changed.
