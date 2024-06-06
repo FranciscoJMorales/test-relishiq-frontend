@@ -44,6 +44,8 @@ export class PhotosComponent implements OnInit {
       albumTitle: [null],
       albumUserEmail: [null],
     });
+
+    this.error = false;
   }
 
   ngOnInit(): void {

@@ -24,7 +24,9 @@ export class PhotoComponent implements OnInit{
     private router: Router,
     private activatedRoute: ActivatedRoute, 
     private photosService: PhotosService,
-  ) { }
+  ) {
+    this.error = false;
+  }
 
   ngOnInit(): void {
     // Get id from param
