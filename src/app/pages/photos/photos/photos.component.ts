@@ -19,6 +19,7 @@ import { PhotosService } from '../../../services/photos.service';
 export class PhotosComponent implements OnInit {
 
   loading: boolean = true;
+  error: boolean = false;
 
   filters: FormGroup;
 
@@ -69,6 +70,7 @@ export class PhotosComponent implements OnInit {
   }
 
   async getPhotos(): Promise<void> {
+    this.error = false;
     this.loading = true;
     try {
       this.router.navigate(
@@ -89,6 +91,7 @@ export class PhotosComponent implements OnInit {
     }
     catch {
       this.photos = [];
+      this.error = true;
     }
     this.loading = false;
   }

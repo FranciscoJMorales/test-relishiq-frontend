@@ -14,6 +14,9 @@ import { Company } from '../../../interfaces/company';
 })
 export class PhotoComponent implements OnInit{
 
+  loading: boolean = true;
+  error: boolean = false;
+
   id: number = 0;
   photo: Photo | null = null;
 
@@ -32,12 +35,16 @@ export class PhotoComponent implements OnInit{
   }
 
   async getPhoto(): Promise<void> {
+    this.error = false;
+    this.loading = true;
     try {
       this.photo = await this.photosService.getPhoto(this.id);
     }
     catch {
       this.photo = null;      
+      this.error = true;
     }
+    this.loading = false;
   }
 
   formatAddress(address: Address): string {
